@@ -1,0 +1,148 @@
+crontab 84
+
+######################ComoVamos################################11-23
+##Telefonos_+
+#colpatria
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_tel_+.py
+#claro
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Cla_tel_+.py
+#falabella
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Fal_tel_+.py
+#Propia
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_CarP_tel_+.py
+#santander
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_San_tel_+.py
+#popular
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Pop_tel_+.py
+#codensa
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Cod_tel_+.py
+#davivienda
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Dav_tel_+.py
+
+##compromisos 
+#colpatria
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_col_cp.py
+#claro
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Cla_cp.py
+#falabella
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Fal_cp.py
+#Propia
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_CarP_cp.py
+#santander
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_San_cp.py
+#popular
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Pop_cp.py
+#codensa
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Cod_cp.py
+#codensa
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Dav_cp.py
+
+##mejor gestion dia
+#colpatria
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_col_mgd.py
+#claro
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cla_mgd.py
+#falabella
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Fal_mgd.py
+#Propia
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_CarP_mgd.py
+#santander
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_San_mgd.py
+#davivienda
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Dav_mgd.py
+#popular
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Pop_mgd.py
+#codensa
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cod_mgd.py
+
+##mejor gestion
+#colpatria
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_col_mg.py
+#claro
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cla_mg.py
+#falabella
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Fal_mg.py
+#Propia
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_CarP_mg.py
+#santander
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_San_mg.py
+#popular
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Pop_mg.py
+#codensa
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cod_mg.py
+#codensa
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Dav_mg.py
+
+
+######################productividad##############################
+##indicators
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos.py
+
+##prod_m indicadores
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/ventas/Con_ventas.py
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/cartera/Con_cartera.py
+
+##clientes
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Con_SQLserver.py
+##clientes-gestion-completa
+#*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Call_Tail.py
+#*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Tail_Up.py
+
+##vicidial now
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql.py
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2.py
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3.py
+##vicidial yesterday daily 
+30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_y.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2_y.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3_y.py
+
+#################Wolkvox
+#app
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Bog.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_CaOK.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Claro.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_DavG.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_DavM.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_FalaC.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Pop.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Prog.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Pro.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_QNT.py
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Sant.py
+#gestion
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Bog.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_CarOK.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Claro.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Fala.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopA.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Pop.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopT.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopR.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prog.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prop.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_QNT.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Sant.py
+#compromisos
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Bog.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_CarOK.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Claro.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Fala.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopA.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Pop.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopT.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopR.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prog.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prop.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_QNT.py
+25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Sant.py
+
+#################BI_telefonos
+30 6 * * * /usr/bin/python3 /home/desarrollo/BI_tel/Con_TelCon.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/BI_tel/YSQL_PSQL_Tel.py
+
+#################Minutos
+30 6 * * * /usr/bin/python3 /home/desarrollo/Minutos/Con_min.py
+
+#################clean connections
+19 7-21 * * * /usr/bin/python3 /home/desarrollo/cn_clean/cn_clean_PP.py
