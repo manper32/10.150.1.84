@@ -1,0 +1,36 @@
+Documentacion Proceso automatico de productividad
+
+Fase 1
+Se toma la data de asterisk.vicidial_agent_log de cada uno de los 
+Host de vicidial los cuales son 10.150.1.120,10.150.1.122 y 10.150.1.123, 
+teniendo en cuenta que estan en MYSQLS, esta informacion es introducida en 
+el Host de produccion (10.150.1.74) en la tabla bi_snap.call_log. Paralelamente 
+se extrae la informacion de clientes atendidos por asesor del gestor (10.150.1.22), la tabla 
+de la cual se extre la informacion es [Gestion_Bi].[dbo].[GestionPorDia], 
+esta informacion es redirigida tanto a Produccion como al Cloud (10.200.50.5).
+
+Fase 2
+
+Se toma la informacion cargada diariamente en call_log y se procesa de tal 
+manera que obtenemos todos nuetros indicadores, ademas de realizar la diferenciacion
+entre ventas y cartera, esta informacion procesada es guardada en bi_snap.prod_m.
+
+por ultimo se toma esta informacion, se agrupa y se cargan los indicadores en el Cloud
+con toda la informacion necesaria para generar el reporte final.
+
+Asignacion en orden 
+
+1. Extraccion vicidial = Con_mysql.py, Con_mysql_2.py, Con_mysql_3.py, Con_mysql_y.py, 
+Con_mysql_2_y.py, Con_mysql_3_y.py
+
+2. Extraccion Gestor = Con_SQLserver.py
+
+3. Procesamiento ventas = Con_ventas.py
+
+4. Procesamiento cartera = Con_cartera.py
+
+5. Extraccion y carga en el Cloud = Con_contactos.py
+
+todos estas archivos reposan en el host 10.150.1.83, con password team.dev.2020! con 
+sistema operativo Ubuntu 18.04.4, este servidor tiene drivers Python para MYSQL, 
+POSTGRESQL, SQLSERVER
