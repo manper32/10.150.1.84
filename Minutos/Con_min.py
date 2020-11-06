@@ -201,7 +201,7 @@ for i in range(len(fn2)):
             cursorP.execute(queryP_in,fn2[i])
             conexionP.commit()
             b += 1
-            print(b)
+#            print(b)
     	except:
             r += 1
 #            print(r)

@@ -2,7 +2,7 @@ import psycopg2
 from datetime import date
 from datetime import timedelta
 
-# cartera
+# ventas
 today = date.today()-timedelta(days=1)
 dt = today.strftime('%Y-%m-%d')
 
@@ -115,9 +115,9 @@ AND cl.fec >= ul.start_date
 AND cl.fec <= ul.end_date 
 LEFT JOIN bi_snap.productivities_list AS pl ON pl.productivity_id = ul.productivity_id
 LEFT JOIN bi_snap.customers AS c ON c.customer_id = pl.customer_id 
-left join bi_snap.management_indicators AS mi on mi.indicator_cod = cl.status
+left join bi_snap.management_indicators_ventas AS mi on mi.indicator_cod = cl.status
 /*FULL OUTER join bi_snap.prod_m AS al on cl.agent_log_id = al.agent_log_id*/
-where c.customer_id <> 13
+where c.customer_id = 13
 and fec in (now()::DATE,now()::DATE-1)
 /*and al.agent_log_id is null */)t1	
 --bi_snap.prod_m
@@ -180,7 +180,8 @@ unit_id
 ,wait_sec
 ,talk_sec
 ,dispo_sec
-,dead_sec) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+,dead_sec) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s
+                ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
 """
 
 cursorP_C.execute(queryP_delC)

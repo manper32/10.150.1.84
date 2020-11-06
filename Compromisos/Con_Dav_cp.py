@@ -23,10 +23,10 @@ li = yesterday.strftime('%Y-%m-%d')
 #credenciales MySQL
 connS = {
     'driver' : 'ODBC Driver 17 for SQL Server',
-	'host' : '10.150.1.22',
+	'host' : '10.150.1.81',
 	'user':'sa',
-	'password':'analistadb1020',
-	'database' : 'Gestion_Bi'}
+	'password':'Analistadb1020',
+	'database' : 'Davivienda'}
 
 #credenciales PostgreSQL produccion
 connP_P = {
@@ -35,15 +35,6 @@ connP_P = {
 	'user':'postgres',
 	'password':'cobrando.bi.2020',
 	'database' : 'postgres'}
-
-#conexion a SQL server
-conexionS = pyodbc.connect(**connS)
-#print('\nConexión con el servidor SQLserver establecida!')
-cursorS = conexionS.cursor ()
-#conexion a PostgreSQL produccion
-conexionP_P = psycopg2.connect(**connP_P)
-#print('\nConexión con el servidor PostgreSQL produccion establecida!')
-cursorP_P = conexionP_P.cursor ()
 
 #query SQLserver
 queryS = """
@@ -69,7 +60,7 @@ order by rtrim(ltrim(indice));
 
 queryP_del_P = """
 delete from cbpo_davivienda.compromisos 
-where fecha_compromiso >= '"""+ li +"';"
+where fecha_compromiso >= '"""+ li +"' and asesor not like '%WOLK%';"
 
 #query insert PostgreSQL produccion
 queryP_in_P ="""
@@ -81,6 +72,12 @@ deudor_id
 ,fecha_pago
 ,asesor) VALUES(%s,%s,%s,%s,%s,%s)
 """
+#conexion a SQLserver
+conexionS = pyodbc.connect(**connS)
+cursorS = conexionS.cursor()
+#conexion a PSQL
+conexionP_P = psycopg2.connect(**connP_P)
+cursorP_P = conexionP_P.cursor()
 
 #ejecuciones
 cursorS.execute(queryS)

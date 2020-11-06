@@ -30,6 +30,7 @@ today = date.today()
 yesterday = date.today() - timedelta(days = 1)
 ls = today.strftime('%Y-%m-%d')
 li = yesterday.strftime('%Y-%m-%d')
+# li = '2020-01-01'
 
 #query MySQL
 queryM = """
@@ -51,7 +52,7 @@ and case 	when length(manage_date) = 15
 			when length(manage_date) = 16
 			then str_to_date(manage_date,'%d.%m.%Y %H%i%s')
 			else str_to_date(manage_date,'%d.%m.%Y %H.%i.%s')
-	end >= '"""+ li +"';"
+	end >= '"""+ li +"' and str_to_date(commit_date ,'%d.%m.%Y') is not null;"
 
 #query PostgreSQL
 queryP_in ="""
@@ -83,8 +84,8 @@ anwr = cursorM.fetchall()
 cursorP.execute(queryP_del_P)
 conexionP.commit()
 
-#cursorP.execute(queryP_in,anwr[0])
-#conexionP.commit()
+# cursorP.execute(queryP_in,anwr[43])
+# conexionP.commit()
 if len(anwr) > 0:
     #insercion
     b = 0

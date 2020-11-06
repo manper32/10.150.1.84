@@ -17,7 +17,7 @@ yesterday = date.today() - timedelta(days = 1)
 ls = today.strftime('%Y-%m-%d')
 li = yesterday.strftime('%Y-%m-%d')
 #ls = '2020-07-30'
-#li = '2020-04-01'
+# li = '2020-04-01'
 #print(pyodbc.drivers())
 
 #credenciales MySQL
@@ -36,15 +36,6 @@ connP_P = {
 	'password':'cobrando.bi.2020',
 	'database' : 'postgres'}
 
-#conexion a SQL server
-conexionS = pyodbc.connect(**connS)
-#print('\nConexión con el servidor SQLserver establecida!')
-cursorS = conexionS.cursor ()
-#conexion a PostgreSQL produccion
-conexionP_P = psycopg2.connect(**connP_P)
-#print('\nConexión con el servidor PostgreSQL produccion establecida!')
-cursorP_P = conexionP_P.cursor ()
-
 #query SQLserver
 queryS = """
 set dateformat ymd
@@ -55,24 +46,28 @@ select distinct
 rtrim(ltrim(indice)) deudor_id,
 rtrim(ltrim(credito)) obligacion_id,
 rtrim(ltrim(monpac)) valor,
-cast(rtrim(ltrim(horfingest)) as datetime) fecha_compromiso,
+cast(rtrim(ltrim(fecges)) as date) fecha_compromiso,
 cast(rtrim(ltrim(feccom)) as date) fecha_pago,
 rtrim(ltrim(asesor)) asesor
-from bancoSantander.dbo.cob_gestrim
+from banco_bogota.dbo.cob_gestrim
 where val_indicad like '%COMPR%'
+--and codemp like '%COPR%'
+and feccom not in ('  /  /    ','          ','9-22/0-/20')
 and ltrim(rtrim(fecges)) between @li and @ls
 or val_indicad like '%NEGOC%'
+--and codemp like '%COPR%'
 and ltrim(rtrim(fecges)) between @li and @ls
+and feccom not in ('  /  /    ','          ','9-22/0-/20')
 order by rtrim(ltrim(indice));
 """
 
 queryP_del_P = """
-delete from cbpo_santander.compromisos
-where fecha_compromiso >= '"""+ li +"'and asesor not like '%WOLK%';"
+delete from cbpo_bogota.compromisos
+where fecha_compromiso >= '"""+ li +"' and asesor not like '%WOLK%';"
 
 #query insert PostgreSQL produccion
 queryP_in_P ="""
-INSERT INTO cbpo_santander.compromisos(
+INSERT INTO cbpo_bogota.compromisos(
 deudor_id
 ,obligacion_id
 ,valor
@@ -80,6 +75,12 @@ deudor_id
 ,fecha_pago
 ,asesor) VALUES(%s,%s,%s,%s,%s,%s)
 """
+#conexion a SQL server
+conexionS = pyodbc.connect(**connS)
+cursorS = conexionS.cursor ()
+#conexion a PostgreSQL produccion
+conexionP_P = psycopg2.connect(**connP_P)
+cursorP_P = conexionP_P.cursor ()
 #ejecuciones
 cursorS.execute(queryS)
 anwr = cursorS.fetchall()

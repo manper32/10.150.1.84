@@ -30,13 +30,12 @@ today = date.today()
 yesterday = date.today() - timedelta(days = 1)
 ls = today.strftime('%Y-%m-%d')
 li = yesterday.strftime('%Y-%m-%d')
-# li = '2020-01-01'
 
 #query MySQL
 queryM = """
 SELECT deudor_id
-	,'' abligacion
-	,cast(replace(replace(Valor,'$',''),'.','')as unsigned) Valor
+	,phone
+	,status
 	,case 	when length(manage_date) = 15 
 			then str_to_date(replace(manage_date,' ',' 0'),'%d.%m.%Y %H%i%s')
 			when length(manage_date) = 16
@@ -44,30 +43,34 @@ SELECT deudor_id
 			else str_to_date(manage_date,'%d.%m.%Y %H.%i.%s')
 	end manage_date
 	,str_to_date(commit_date ,'%d.%m.%Y')commit_date
-	,'WOLK-CBOT'
-from cobrando.manage_prop
-where status in ('CP','NG')
-and case 	when length(manage_date) = 15 
-			then str_to_date(replace(manage_date,' ',' 0'),'%d.%m.%Y %H%i%s')
-			when length(manage_date) = 16
-			then str_to_date(manage_date,'%d.%m.%Y %H%i%s')
-			else str_to_date(manage_date,'%d.%m.%Y %H.%i.%s')
-	end >= '"""+ li +"';"
+	,Valor
+	,dues
+	,reason_nopay
+from cobrando.manage_davi
+where 	case 	when length(manage_date) = 15 
+				then str_to_date(replace(manage_date,' ',' 0'),'%d.%m.%Y %H%i%s')
+				when length(manage_date) = 16
+				then str_to_date(manage_date,'%d.%m.%Y %H%i%s')
+				else str_to_date(manage_date,'%d.%m.%Y %H.%i.%s')
+		end >= date_sub(curdate(),interval 1 day);
+"""
 
 #query PostgreSQL
 queryP_in ="""
-INSERT INTO cbpo_propia.compromisos(
-deudor_id	
-,obligacion_id	
-,valor	
-,fecha_compromiso	
-,fecha_pago	
-,asesor) VALUES(%s,%s,%s,%s,%s,%s)
+INSERT INTO cbpo_davivienda.wolk_manage(
+deudor_id,
+phone,
+status,
+manage_date,
+commit_date,
+valor,
+dues,
+reason_nopay) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)
 """
 
 queryP_del_P = """
-delete from cbpo_propia.compromisos
-where fecha_compromiso >= '"""+ li +"'and asesor = 'WOLK-CBOT';"
+delete from cbpo_davivienda.wolk_manage
+where manage_date >= '"""+ li +"';"
 
 #Conexion MySQL
 conexionM = mysql.connector.connect(**connM)
@@ -84,8 +87,8 @@ anwr = cursorM.fetchall()
 cursorP.execute(queryP_del_P)
 conexionP.commit()
 
-#cursorP.execute(queryP_in,anwr[0])
-#conexionP.commit()
+# cursorP.execute(queryP_in,anwr[0])
+# conexionP.commit()
 if len(anwr) > 0:
     #insercion
     b = 0

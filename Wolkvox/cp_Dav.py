@@ -45,7 +45,7 @@ SELECT deudor_id
 	end manage_date
 	,str_to_date(commit_date ,'%d.%m.%Y')commit_date
 	,'WOLK-CBOT'
-from cobrando.manage_prop
+from cobrando.manage_davi
 where status in ('CP','NG')
 and case 	when length(manage_date) = 15 
 			then str_to_date(replace(manage_date,' ',' 0'),'%d.%m.%Y %H%i%s')
@@ -56,7 +56,7 @@ and case 	when length(manage_date) = 15
 
 #query PostgreSQL
 queryP_in ="""
-INSERT INTO cbpo_propia.compromisos(
+INSERT INTO cbpo_davivienda.compromisos(
 deudor_id	
 ,obligacion_id	
 ,valor	
@@ -66,7 +66,7 @@ deudor_id
 """
 
 queryP_del_P = """
-delete from cbpo_propia.compromisos
+delete from cbpo_davivienda.compromisos
 where fecha_compromiso >= '"""+ li +"'and asesor = 'WOLK-CBOT';"
 
 #Conexion MySQL

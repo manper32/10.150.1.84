@@ -20,10 +20,10 @@ ls = today.strftime('%Y/%m/%d')
 #credenciales MySQL
 connS = {
     'driver' : 'ODBC Driver 17 for SQL Server',
-	'host' : '10.150.1.22',
+	'host' : '10.150.1.81',
 	'user':'sa',
-	'password':'analistadb1020',
-	'database' : 'Gestion_Bi'}
+	'password':'Analistadb1020',
+	'database' : 'Davivienda'}
 
 #credenciales PostgreSQL produccion
 connP_P = {
@@ -32,15 +32,6 @@ connP_P = {
 	'user':'postgres',
 	'password':'cobrando.bi.2020',
 	'database' : 'postgres'}
-
-#conexion a SQL server
-conexionS = pyodbc.connect(**connS)
-#print('\nConexión con el servidor SQLserver establecida!')
-cursorS = conexionS.cursor ()
-#conexion a PostgreSQL produccion
-conexionP_P = psycopg2.connect(**connP_P)
-#print('\nConexión con el servidor PostgreSQL produccion establecida!')
-cursorP_P = conexionP_P.cursor ()
 
 #li = "2020/06/01"
 #ls = "2020/06/30"
@@ -166,6 +157,12 @@ deudor_id
 ,descod01
 ,descod02) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
 """
+#conexion a SQL server
+conexionS = pyodbc.connect(**connS)
+cursorS = conexionS.cursor ()
+#conexion a PostgreSQL produccion
+conexionP_P = psycopg2.connect(**connP_P)
+cursorP_P = conexionP_P.cursor()
 
 #ejecuaciones
 cursorS.execute(queryS)
@@ -188,10 +185,6 @@ for i in range(len(anwr)):
     except:
         r += 1
 #        print(i)
-
-#print("se pudieron cargar produccion : ",b)
-#print("no se pudieron cargar produccion : ",r)
-
 
 #close SQL server
 cursorS.close()

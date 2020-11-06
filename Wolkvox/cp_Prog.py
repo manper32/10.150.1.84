@@ -30,6 +30,7 @@ today = date.today()
 yesterday = date.today() - timedelta(days = 1)
 ls = today.strftime('%Y-%m-%d')
 li = yesterday.strftime('%Y-%m-%d')
+# li = '2020-01-01'
 
 #query MySQL
 queryM = """

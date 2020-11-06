@@ -12,10 +12,10 @@ import psycopg2
 #credenciales MySQL
 connS = {
     'driver' : 'ODBC Driver 17 for SQL Server',
-	'host' : '10.150.1.81',
+	'host' : '10.150.1.22',
 	'user':'sa',
-	'password':'Analistadb1020',
-	'database' : 'Davivienda'}
+	'password':'analistadb1020',
+	'database' : 'Gestion_Bi'}
 
 #credenciales PostgreSQL produccion
 connP_P = {
@@ -35,7 +35,7 @@ select distinct ltrim(rtrim(indice)) deudor_id,
 from 
 (
 	select * 
-	from Davivienda.dbo.cob_gestrim 
+	from banco_bogota.dbo.cob_gestrim 
 	where val_indicad not in ('MENSAJE', 'NO CONTACTADO','') 
 		and telefono!='' 
 		and fila=1
@@ -48,12 +48,12 @@ order by ltrim(rtrim(indice)) desc;
 
 #quey PostgeSQL delete
 queryP_del_P = """
-truncate table cbpo_davivienda.telefonos_positivos;
+truncate table cbpo_bogota.telefonos_positivos;
 """
 
 #query insert PostgreSQL produccion
 queryP_in_P ="""
-INSERT INTO cbpo_davivienda.telefonos_positivos(
+INSERT INTO cbpo_bogota.telefonos_positivos(
 deudor_id
 ,telefono
 ,marcaciones
@@ -65,6 +65,7 @@ cursorS = conexionS.cursor ()
 #conexion a PostgreSQL produccion
 conexionP_P = psycopg2.connect(**connP_P)
 cursorP_P = conexionP_P.cursor ()
+
 
 #ejecuaciones
 cursorS.execute(queryS)
@@ -88,9 +89,6 @@ for i in range(len(anwr)):
     except:
         r += 1
 #        print(i)
-
-#print("se pudieron cargar produccion : ",b)
-#print("no se pudieron cargar produccion : ",r)
 
 #close SQL server
 cursorS.close()

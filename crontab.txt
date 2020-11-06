@@ -1,5 +1,3 @@
-crontab 84
-
 ######################ComoVamos################################11-23
 ##Telefonos_+
 #colpatria
@@ -18,6 +16,8 @@ crontab 84
 30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Cod_tel_+.py
 #davivienda
 30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Dav_tel_+.py
+#Bogota
+30 6 * * * /usr/bin/python3 /home/desarrollo/Telefonos_+/Con_Bog_tel_+.py
 
 ##compromisos 
 #colpatria
@@ -34,8 +34,10 @@ crontab 84
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Pop_cp.py
 #codensa
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Cod_cp.py
-#codensa
+#Davivienda
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Dav_cp.py
+#Bogota
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Bog_cp.py
 
 ##mejor gestion dia
 #colpatria
@@ -54,6 +56,8 @@ crontab 84
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Pop_mgd.py
 #codensa
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cod_mgd.py
+#Bogota
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Bog_mgd.py
 
 ##mejor gestion
 #colpatria
@@ -70,32 +74,38 @@ crontab 84
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Pop_mg.py
 #codensa
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cod_mg.py
-#codensa
+#Davivienda
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Dav_mg.py
-
+#Bogota
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Bog_mg.py
 
 ######################productividad##############################
 ##indicators
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos2.py
 
 ##prod_m indicadores
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/ventas/Con_ventas.py
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/cartera/Con_cartera.py
+#*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/ventas/Con_ventas.py
+#*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/cartera/Con_cartera.py
 
 ##clientes
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Con_SQLserver.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Con_SQLserver.py
 ##clientes-gestion-completa
 #*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Call_Tail.py
 #*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Tail_Up.py
 
 ##vicidial now
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql.py
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2.py
-*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3.py
 ##vicidial yesterday daily 
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_y.py
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2_y.py
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3_y.py
+
+############Avantel
+
+30 6 * * * /usr/bin/python3 /home/desarrollo/Avantel/Avantel.py
 
 #################Wolkvox
 #app
@@ -111,32 +121,33 @@ crontab 84
 35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_QNT.py
 35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Sant.py
 #gestion
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Bog.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_CarOK.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Claro.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Fala.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopA.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Pop.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopT.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopR.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prog.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prop.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_QNT.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Sant.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Bog.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_CarOK.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Claro.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Fala.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopA.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Pop.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopT.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_PopR.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prog.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Prop.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_QNT.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Sant.py
+10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Dav.py
 #compromisos
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Bog.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_CarOK.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Claro.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Fala.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopA.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Pop.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopT.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopR.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prog.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prop.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_QNT.py
-25 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Sant.py
-
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Bog.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_CarOK.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Claro.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Fala.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopA.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Pop.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopT.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_PopR.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prog.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Prop.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_QNT.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Sant.py
+5 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/cp_Dav.py
 #################BI_telefonos
 30 6 * * * /usr/bin/python3 /home/desarrollo/BI_tel/Con_TelCon.py
 30 6 * * * /usr/bin/python3 /home/desarrollo/BI_tel/YSQL_PSQL_Tel.py

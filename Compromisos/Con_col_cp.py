@@ -69,7 +69,7 @@ order by rtrim(ltrim(indice));
 
 queryP_del_P = """
 delete from cbpo_colpatria.compromisos 
-where fecha_compromiso >= '"""+ li +"';"
+where fecha_compromiso >= '"""+ li +"' and asesor not like '%WOLK%';"
 
 #query insert PostgreSQL produccion
 queryP_in_P ="""
