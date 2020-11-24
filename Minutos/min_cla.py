@@ -24,7 +24,8 @@ connP = {
 #dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20200703/*.txt')
 #dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20200803/*.txt')
 #dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20200903/*.txt')
-dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20201003/*.txt')
+# dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20201003/*.txt')
+dir_arc = glob.glob('/home/manuel/Documentos/Archivos_Claro/8.22448996_20201103/*.txt')
 
 f_arc = []
 for i in range(len(dir_arc)):
