@@ -22,15 +22,13 @@ connP_C = {
 	'password':'pepito2019',
 	'database' : 'BIWOLKVOX'}
 
-#conexion a PostgreSQL produccion
-conexionP_P = psycopg2.connect(**connP_P)
-#print('\nConexión con el servidor PostgreSQL establecida!')
-cursorP_P = conexionP_P.cursor ()
-
-#conexion a PostgreSQL cloud
-conexionP_C = psycopg2.connect(**connP_C)
-#print('\nConexión con el servidor PostgreSQL establecida!')
-cursorP_C = conexionP_C.cursor ()
+#credenciales PostgreSQL test
+connP_T = {
+	'host' : '10.150.1.77',
+	'port' : '5432',
+	'user':'bi',
+	'password':'juanitoMeToco2020',
+	'database' : 'login'}
 
 #query indicador prodiccion
 queryP_data = """
@@ -137,18 +135,18 @@ order by 	fec desc,
 
 #query delete PostgreSQL cloud
 queryP_delC ="""
-delete from dashboard.indicators
+delete from {0}.indicators
 where fec >= '"""+ dt +"';"
 
 #query delete PostgreSQL cloud 0 CALLS
 queryP_delC0 ="""
-delete from dashboard.indicators
+delete from {0}.indicators
 where calls = 0;
 """
 
 #query insert PostgreSQL cloud
 queryP_inC ="""
-INSERT INTO dashboard.indicators(
+INSERT INTO {0}.indicators(
 unit_id
 ,user_id
 ,full_name
@@ -184,8 +182,22 @@ unit_id
                 ,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
 """
 
-cursorP_C.execute(queryP_delC)
+#conexion a PostgreSQL produccion
+conexionP_P = psycopg2.connect(**connP_P)
+cursorP_P = conexionP_P.cursor ()
+
+#conexion a PostgreSQL cloud
+conexionP_C = psycopg2.connect(**connP_C)
+cursorP_C = conexionP_C.cursor ()
+
+#conexion a PostgreSQL test
+conexionP_T = psycopg2.connect(**connP_T)
+cursorP_T = conexionP_T.cursor ()
+
+cursorP_C.execute(queryP_delC.format('dashboard'))
 conexionP_C.commit()
+cursorP_T.execute(queryP_delC.format('public'))
+conexionP_T.commit()
 
 cursorP_P.execute(queryP_data)
 anwr = cursorP_P.fetchall()
@@ -198,18 +210,29 @@ b = 0
 r = 0
 for i in range(len(anwr)):
     try:
-        cursorP_C.execute(queryP_inC,anwr[i])
+        cursorP_C.execute(queryP_inC.format('dashboard'),anwr[i])
         conexionP_C.commit()
         b += 1
     except:
         r += 1
 #        print(i)
 
-#print("se pudieron cargar en cloud : ",b)
-#print("no se pudieron cargar en cloud : ",r)
+#insercion test
+b = 0
+r = 0
+for i in range(len(anwr)):
+    try:
+        cursorP_T.execute(queryP_inC.format('public'),anwr[i])
+        conexionP_T.commit()
+        b += 1
+    except:
+        r += 1
+#        print(i)
 
-cursorP_C.execute(queryP_delC0)
+cursorP_C.execute(queryP_delC0.format('dashboard'))
 conexionP_C.commit()
+cursorP_T.execute(queryP_delC0.format('public'))
+conexionP_T.commit()
 
 for x in range(len(anwr)):
     #close PostgreSQL produccion

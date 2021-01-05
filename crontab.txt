@@ -38,6 +38,14 @@
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Dav_cp.py
 #Bogota
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Bog_cp.py
+#Progresa
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Pro_cp.py
+#Avantel
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Ava_cp.py
+#Maf
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/Compromisos/Con_Maf_cp.py
+
+
 
 ##mejor gestion dia
 #colpatria
@@ -58,6 +66,14 @@
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Cod_mgd.py
 #Bogota
 */5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Bog_mgd.py
+#QNT
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_QNT_mgd.py 
+#Avantel Recuperacion
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Ava_mgd.py
+#Maf
+*/5 7-21 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Maf_mgd.py
+
+
 
 ##mejor gestion
 #colpatria
@@ -78,15 +94,24 @@
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Dav_mg.py
 #Bogota
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Bog_mg.py
+#QNT
+30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_QNT_mg.py
+#Avantel
+30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_Ava_mg.py
+#Maf
+30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_Maf_mg.py
 
 ######################productividad##############################
 ##indicators
-*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos.py
-*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos2.py
+# */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos.py
+# */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_contactos2.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/indicadores/Con_indicadoresCons.py
+
 
 ##prod_m indicadores
 #*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/ventas/Con_ventas.py
 #*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/cartera/Con_cartera.py
+
 
 ##clientes
 */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/asesores/Con_SQLserver.py
@@ -105,7 +130,7 @@
 
 ############Avantel
 
-30 6 * * * /usr/bin/python3 /home/desarrollo/Avantel/Avantel.py
+30 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Avantel/Avantel.py
 
 #################Wolkvox
 #app
