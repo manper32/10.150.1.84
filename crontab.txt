@@ -95,11 +95,11 @@
 #Bogota
 30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Bog_mg.py
 #QNT
-30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_QNT_mg.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_QNT_mg.py
 #Avantel
-30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_Ava_mg.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Ava_mg.py
 #Maf
-30 6 * * * /usr/bin/python3 /home/desarrollo/Mejorgestion/Con_Maf_mg.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/MejorGestion/Con_Maf_mg.py
 
 ######################productividad##############################
 ##indicators
@@ -123,10 +123,12 @@
 */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql.py
 */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2.py
 */10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3.py
+*/10 7-21 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_4.py
 ##vicidial yesterday daily 
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_y.py
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_2_y.py
 30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_3_y.py
+30 6 * * * /usr/bin/python3 /home/desarrollo/Automatic/vicidial/Con_mysql_4_y.py
 
 ############Avantel
 
@@ -145,6 +147,8 @@
 35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Pro.py
 35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_QNT.py
 35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/chat_Sant.py
+#manage a gestiones WiseR
+35 6 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/mange_gestion.py
 #gestion
 10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_Bog.py
 10 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Wolkvox/manage_CarOK.py
@@ -180,5 +184,9 @@
 #################Minutos
 30 6 * * * /usr/bin/python3 /home/desarrollo/Minutos/Con_min.py
 
+#################NoContact
+40 7-21/1 * * * /usr/bin/python3 /home/desarrollo/Automatic/wiser/no_contact/NoContact.py
+
 #################clean connections
 19 7-21 * * * /usr/bin/python3 /home/desarrollo/cn_clean/cn_clean_PP.py
+

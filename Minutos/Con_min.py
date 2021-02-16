@@ -1,5 +1,5 @@
 import pandas as pd
-import mysql.connector 
+import mysql.connector
 import psycopg2
 
 #credenciales MySQL120
@@ -26,6 +26,13 @@ connM3 = {
 #credenciales MySQL206
 connM4 = {
 	'host' : '10.150.1.206',
+	'user':'desarrollo',
+	'password':'soportE*8994',
+	'database' : 'asterisk'}
+
+#credenciales MySQL124
+connM5 = {
+	'host' : '10.150.1.124',
 	'user':'desarrollo',
 	'password':'soportE*8994',
 	'database' : 'asterisk'}
@@ -160,6 +167,10 @@ cursorM3 = conexionM3.cursor()
 conexionM4 = mysql.connector.connect(**connM4)
 cursorM4 = conexionM4.cursor()
 
+#Conexion MySQL24
+conexionM5 = mysql.connector.connect(**connM5)
+cursorM5 = conexionM5.cursor()
+
 #Conexion PostgreSQL
 conexionP = psycopg2.connect(**connP)
 cursorP = conexionP.cursor ()
@@ -176,6 +187,10 @@ anwr2 = cursorM2.fetchall()
 cursorM3.execute(queryM)
 anwr3 = cursorM3.fetchall()
 
+#ejecuciones SQL24
+cursorM5.execute(queryM)
+anwr5 = cursorM5.fetchall()
+
 #ejecuciones SQL206
 cursorM4.execute(queryM1)
 anwr4 = cursorM4.fetchall()
@@ -184,14 +199,15 @@ anwr = pd.DataFrame(anwr)
 anwr2 = pd.DataFrame(anwr2)
 anwr3 = pd.DataFrame(anwr3)
 anwr4 = pd.DataFrame(anwr4)
+anwr5 = pd.DataFrame(anwr5)
 fn = pd.DataFrame()
-for n in [anwr,anwr2,anwr3,anwr4]:
+for n in [anwr,anwr2,anwr3,anwr4,anwr5]:
 	fn = fn.append(n)
 #fn2 = anwr4
 fn2 = [tuple(x) for x in fn.values]
 
-#cursorP.execute(queryP_in,fn2[0])
-#conexionP.commit()
+cursorP.execute(queryP_in,fn2[0])
+conexionP.commit()
 
 #insercion
 b=0;
@@ -203,13 +219,15 @@ for i in range(len(fn2)):
             b += 1
 #            print(b)
     	except:
+            conexionP = psycopg2.connect(**connP)
+            cursorP = conexionP.cursor ()
             r += 1
-#            print(r)
+            # print(r)
             
 cursorP.execute(queryP)
 conexionP.commit()
 
-for x in range(len(anwr)+len(anwr2)+len(anwr3)+len(anwr4)):
+for x in range(len(anwr)+len(anwr2)+len(anwr3)+len(anwr4)+len(anwr5)):
     #close Mysql
     cursorM1.close()
     conexionM1.close()
@@ -219,6 +237,12 @@ for x in range(len(anwr)+len(anwr2)+len(anwr3)+len(anwr4)):
     #close Mysql
     cursorM3.close()
     conexionM3.close()
+    #close Mysql
+    cursorM4.close()
+    conexionM4.close()
+    #close Mysql
+    cursorM5.close()
+    conexionM5.close()
     #close PostgreSQL
     cursorP.close()
     conexionP.close()
